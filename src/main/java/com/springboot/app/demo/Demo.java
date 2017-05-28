@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by chenliang on 2017/5/19.
  */
-//@PropertySource("classpath:jdbc.properties")
+//@PropertySource("classpath:jdbc.properties") 单个配置文件
 @PropertySources(value = {@PropertySource ("classpath:jdbc.properties"),
     @PropertySource ("classpath:mysql.properties") })
 @ConfigurationProperties(prefix = "mysql")
@@ -24,6 +24,9 @@ public class Demo {
 
   //第二中读取配置文件内容
   private String driver;
+
+  private String url;
+
 
   public void setDriver(String driver) {
     this.driver = driver;
