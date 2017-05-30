@@ -136,8 +136,8 @@ public class DomXmlUtil {
                 NodeList childNodes = node.getChildNodes();
                 System.out.println("第："+i+"条数据属性："+childNodes.getLength()+"条子节点");
                 //遍历childNodes获取每个节点的节点名和节点值
+                book = new Book();
                 for (int k=0;k<childNodes.getLength();k++){
-                    book = new Book();
                     //区分text类型以及element类型节点
                     if (childNodes.item(k).getNodeType() == Node.ELEMENT_NODE){
                         //获取element类型节点名和节点值
@@ -161,8 +161,8 @@ public class DomXmlUtil {
                         }
 //                        System.out.print(",子节点值："+childNodes.item(k).getTextContent());
                     }
-                        bookList.add(book);
                 }
+                        bookList.add(book);
 
                 System.out.println("组装数据："+bookList.size());
                 System.out.println("=================遍历第"+i+"个node节点结束====================");
@@ -170,6 +170,9 @@ public class DomXmlUtil {
 
             for (Book boo:bookList){
                 System.out.println(boo.getName());
+                System.out.println(boo.getAge());
+                System.out.println(boo.getAuthor());
+                System.out.println(boo.getYear());
             }
 
         } catch (SAXException e) {
