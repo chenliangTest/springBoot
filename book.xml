@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><bookStore>
+<Book id="1">
+<name>测试</name>
+<author>陈良</author>
+<year>2017</year>
+<age>25</age>
+</Book>
+<Book id="2">
+<name>测试1</name>
+<author>陈良</author>
+<year>2017</year>
+<age>25</age>
+</Book>
+</bookStore>
