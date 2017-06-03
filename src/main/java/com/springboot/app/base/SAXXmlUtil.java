@@ -1,20 +1,16 @@
 package com.springboot.app.base;
 
 import com.springboot.app.Entity.Book;
-import com.sun.org.apache.xml.internal.resolver.readers.SAXParserHandler;
+import com.springboot.app.base.utils.SAXParserHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.sax.TransformerHandler;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,19 +25,23 @@ public class SAXXmlUtil {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 
         //通过SAXParserHandler获取SAXParser实例
-        SAXParserHandler saxParserHandler = null;
+//        SAXParserHandler saxParserHandler = null;
         try {
-            SAXParser saxParser = saxParserFactory.newSAXParser();
+//            SAXParser saxParser = saxParserFactory.newSAXParser();
+//
+//            saxParserHandler = new SAXParserHandler();
+//
+//            saxParser.parse("Book.xml",saxParserHandler);
 
-            saxParserHandler = new SAXParserHandler();
+            SAXParserHandler sax = new SAXParserHandler();
+            InputStream input = new FileInputStream(new File("book1.xml"));
+                    //this.getClass().getClassLoader().getResourceAsStream("book1.xml");
+            List<Book> books = sax.getBooks(input);
+            for(Book book : books){
+                System.out.println(book.getName()+","+book.getAuthor()+","+book.getAge()+","+book.getYear());
+            }
 
-            saxParser.parse("Book.xml",saxParserHandler);
-
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -140,6 +140,7 @@ public class SAXXmlUtil {
         }
     }
 
+
     public static void main(String[] args){
         List<Book> list = new ArrayList<Book>();
         Book book = new Book();
@@ -165,5 +166,7 @@ public class SAXXmlUtil {
         list.add(book2);
         SAXXmlUtil saxXmlUtil = new SAXXmlUtil();
         saxXmlUtil.saxCreateXml(list);
+
+        saxXmlUtil.parseXML();
     }
 }
