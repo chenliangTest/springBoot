@@ -35,11 +35,14 @@ public class SAXParserHandler extends DefaultHandler {
     @Override
     public void startDocument() throws SAXException {
         books = new ArrayList<Book>();
+
+        super.startDocument();
+        System.out.println("sax解析开始");
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if("book".equals(qName)){
+        /*if("book".equals(qName)){
             book = new Book();
             book.setName(attributes.getValue(0));
         }
@@ -55,7 +58,12 @@ public class SAXParserHandler extends DefaultHandler {
             book = new Book();
             book.setAge(attributes.getValue(0));
         }
-        preTag = qName;//将正在解析的节点名称赋给preTag
+        preTag = qName;//将正在解析的节点名称赋给preTag*/
+        super.startElement(uri,localName,qName,attributes);
+        if (qName.equals("book")){
+            String value = attributes.getValue("id");
+            System.out.println(value);
+        }
     }
 
     @Override
@@ -69,6 +77,8 @@ public class SAXParserHandler extends DefaultHandler {
          ，如果这里不把preTag置为null，根据startElement(....)方法，preTag的值还是book，当文档顺序读到图
          中标记4的位置时，会执行characters(char[] ch, int start, int length)这个方法，而characters(....)方
          法判断preTag!=null，会执行if判断的代码，这样就会把空值赋值给book，这不是我们想要的。*/
+        //super.endDocument();
+        //System.out.println("sax解析结束");
     }
 
     @Override
