@@ -11,6 +11,6 @@ public class GitTest {
     }
 
     public static void gitError(){
-        System.out.println("git 命令测试合并冲突");
+        System.out.println("git 命令测试合并冲突2222");
     }
 }
