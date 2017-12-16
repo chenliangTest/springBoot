@@ -7,6 +7,10 @@ public class GitTest {
 
     public static void main(String[] args) {
         System.out.println("git 命令测试合并冲突");
+        gitError();
+    }
+
+    public static void gitError(){
         System.out.println("git 命令测试合并冲突");
     }
 }
