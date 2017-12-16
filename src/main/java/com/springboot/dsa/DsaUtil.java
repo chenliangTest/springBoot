@@ -36,7 +36,9 @@ public class DsaUtil {
             Signature signature = Signature.getInstance("SHA1withDSA");
             signature.initSign(privateKey);
             signature.update(src.getBytes());
+            //签名
             byte[] result = signature.sign();
+                    //signature.sign();
 
             System.out.println("jdk dsa sign:"+ Hex.encodeHexString(result));
 
