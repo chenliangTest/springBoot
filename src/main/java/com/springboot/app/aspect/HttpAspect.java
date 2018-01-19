@@ -24,16 +24,16 @@ public class HttpAspect {
 
     @Before("log()")
     public void doBefore(){
-        logger.info("1111111");
+        logger.info("11111115555");
     }
 
     @After("log()")
     public void doAfter(){
-        logger.info("2222222");
+        logger.info("222222233333");
     }
 
-    @AfterReturning
-    public void doAfterReturning(){
-
-    }
+//    @AfterReturning
+//    public void doAfterReturning(){
+//
+//    }
 }
