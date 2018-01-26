@@ -8,6 +8,11 @@ public class GitTest {
     public static void main(String[] args) {
         System.out.println("git 命令测试合并冲突");
         gitError();
+
+        String ammount = "10.22";
+        System.out.println(Float.valueOf(ammount));
+        System.out.println(Float.parseFloat(ammount));
+
     }
 
     public static void gitError(){
